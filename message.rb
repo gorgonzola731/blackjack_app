@@ -1,236 +1,233 @@
 module Message
-
   def start_message
-    puts <<~text
-    ----------------------------------
-    |                                |
-    |           BLACK JACK           |
-    |                                |
-    ----------------------------------
+    puts <<~TEXT
+      ----------------------------------
+      |                                |
+      |           BLACK JACK           |
+      |                                |
+      ----------------------------------
 
-    text
+    TEXT
   end
 
   def disp_money(player)
-    puts <<~text
+    puts <<~TEXT
 
       現在の所持金は#{player.money}円です。
       掛け金を入力して下さい。
 
-      text
+    TEXT
   end
 
   def information1
-    puts <<~text
+    puts <<~TEXT
 
       まずはディーラー、プレイヤー共に
       デッキからカードを2枚引きます
 
-      text
-
+    TEXT
   end
 
   def player_point_information1
-    puts <<~text
-        あなたの手札の合計点数は#{@player_point}です。
-        ----------------------------------
-        text
+    puts <<~TEXT
+      あなたの手札の合計点数は#{@player_point}です。
+      ----------------------------------
+    TEXT
   end
 
   def player_point_information2
-    puts <<~text
-        あなたの手札の合計点数は#{@player_point}、もしくは#{@player_point-10}です。
-        ----------------------------------
-        text
+    puts <<~TEXT
+      あなたの手札の合計点数は#{@player_point}、もしくは#{@player_point - 10}です。
+      ----------------------------------
+    TEXT
   end
 
   def information2
-    puts <<~text
+    puts <<~TEXT
 
-        あなたの行動を選択してください
+      あなたの行動を選択してください
 
-        1.Hit 2.Stand
+      1.Hit 2.Stand
 
-        text
+    TEXT
   end
 
   def player_point_information3
-    puts <<~text
-          あなたの手札の合計点数は#{@player_point}です。
-          ----------------------------------
-          text
+    puts <<~TEXT
+      あなたの手札の合計点数は#{@player_point}です。
+      ----------------------------------
+    TEXT
   end
 
   def information3
-    puts <<~text
-          ----------------------------------
-          error ： 1か2を入力してください
-          ----------------------------------
-          text
+    puts <<~TEXT
+      ----------------------------------
+      error ： 1か2を入力してください
+      ----------------------------------
+    TEXT
   end
 
   def information4
-    puts <<~text
+    puts <<~TEXT
 
-        ディーラーがカードを引き終わりました
-        勝敗判定に参りましょう
+      ディーラーがカードを引き終わりました
+      勝敗判定に参りましょう
 
-        text
+    TEXT
   end
 
   def end_message
-    puts <<~text
+    puts <<~TEXT
 
-        所持金が0円になりました。
-        ----------------------------------
+      所持金が0円になりました。
+      ----------------------------------
 
-        ゲームオーバー
+      ゲームオーバー
 
-        text
+    TEXT
   end
 
   def continue_or_end_message
-    puts <<~text
-        現在の所持金 ： #{@money_show}円
-        ----------------------------------
+    puts <<~TEXT
+      現在の所持金 ： #{@money_show}円
+      ----------------------------------
 
-        1.ゲームを続ける 2.ゲームをやめる
+      1.ゲームを続ける 2.ゲームをやめる
 
-        text
+    TEXT
   end
 
   def information5
-    puts <<~text
+    puts <<~TEXT
 
-          ゲーム続行
+      ゲーム続行
 
-          text
+    TEXT
   end
 
   def information6
-    puts <<~text
+    puts <<~TEXT
 
-          ゲーム終了
+      ゲーム終了
 
-          text
+    TEXT
   end
 
   def information7
-    puts <<~text
+    puts <<~TEXT
 
-          ----------------------------------
-          error ： 1か2を入力してください
-          ----------------------------------
+      ----------------------------------
+      error ： 1か2を入力してください
+      ----------------------------------
 
-          text
+    TEXT
   end
 
   def dealer_point_information1
-    puts <<~text
-    ディーラーの手札の合計点数は#{@dealer_point}です。
-    ----------------------------------
-    text
+    puts <<~TEXT
+      ディーラーの手札の合計点数は#{@dealer_point}です。
+      ----------------------------------
+    TEXT
   end
 
   def player_point_information4
-    puts <<~text
-    あなたの手札の合計点数は#{@player_point}です。
-    ----------------------------------
-    text
+    puts <<~TEXT
+      あなたの手札の合計点数は#{@player_point}です。
+      ----------------------------------
+    TEXT
   end
 
   def information8
-    puts <<~text
+    puts <<~TEXT
 
 
       合計得点が同点となりました。引き分けです。
 
       ---------money_information--------
-      text
+    TEXT
   end
 
   def information9
-    puts <<~text
+    puts <<~TEXT
 
 
       ブラックジャック！おめでとうございます。あなたの勝ちです。
 
-      text
+    TEXT
   end
 
   def money_information1
-    puts "---------money_information--------"
+    puts '---------money_information--------'
     puts "支払い金額 ： #{@paid}円"
   end
 
   def information10
-    puts <<~text
+    puts <<~TEXT
 
 
       ディーラーがバーストしました。
       おめでとうございます。あなたの勝ちです！
 
-      text
+    TEXT
   end
 
   def money_information2
-    puts "---------money_information--------"
-      puts "支払い金額 ： #{@paid}円"
+    puts '---------money_information--------'
+    puts "支払い金額 ： #{@paid}円"
   end
 
   def information11
-    puts <<~text
+    puts <<~TEXT
 
 
       ディーラーの勝利。あなたの負けです。
 
       ---------money_information--------
-      text
+    TEXT
   end
 
   def information12
-    puts <<~text
+    puts <<~TEXT
 
 
       おめでとうございます。あなたの勝ちです。
 
-      text
+    TEXT
   end
 
   def money_information3
-    puts "---------money_information--------"
-      puts "支払い金額 ： #{@paid}円"
+    puts '---------money_information--------'
+    puts "支払い金額 ： #{@paid}円"
   end
 
   def information13
-    puts <<~text
+    puts <<~TEXT
 
 
-    バーストしました。あなたの負けです
+      バーストしました。あなたの負けです
 
-    ---------money_information--------
-    text
+      ---------money_information--------
+    TEXT
   end
 
   def money_information4
-    puts <<~text
+    puts <<~TEXT
 
-          ---------money_information--------
-          掛け金 ： #{@bet}円
-          残り所持金 ： #{@money_show}円
-          ----------------------------------
+      ---------money_information--------
+      掛け金 ： #{@bet}円
+      残り所持金 ： #{@money_show}円
+      ----------------------------------
 
-          text
+    TEXT
   end
 
   def information14
-    puts <<~text
+    puts <<~TEXT
 
-          ----------------------------------
-          error ： 所持金以下の数値を入力してください
-          ----------------------------------
+      ----------------------------------
+      error ： 所持金以下の数値を入力してください
+      ----------------------------------
 
-          text
+    TEXT
   end
-
 end

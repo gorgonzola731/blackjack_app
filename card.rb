@@ -1,16 +1,12 @@
 class Card
-
   def initialize(mark, number)
     @mark = mark
     @number = number
   end
 
-  def number
-    @number
-  end
+  attr_reader :number
 
   def show
-    return "#{@mark}の#{@number}"
+    "#{@mark}の#{@number}"
   end
-
 end

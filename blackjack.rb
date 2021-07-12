@@ -1,11 +1,10 @@
-require "./deck"
-require "./card"
-require "./player"
-require "./dealer"
-require "./message"
+require './deck'
+require './card'
+require './player'
+require './dealer'
+require './message'
 
 class Blackjack
-
   include Message
 
   BUST_NUMBER = 22
@@ -14,7 +13,6 @@ class Blackjack
   RATE = 1.5
 
   def start
-
     start_message
 
     while true
@@ -106,7 +104,7 @@ class Blackjack
           information5
 
         elsif continue == 2
-           information6
+          information6
           break
 
         else
@@ -129,7 +127,6 @@ class Blackjack
   end
 
   def judge
-
     @dealer.hands_show_dealer
     @dealer_point = point_dealer
 
@@ -146,7 +143,7 @@ class Blackjack
 
     elsif @player_point == BLACK_JACK
       information9
-      @paid = @bet + @bet*RATE
+      @paid = @bet + @bet * RATE
       @money_show = @player.paid_money(@paid.floor)
       money_information1
 
@@ -169,90 +166,87 @@ class Blackjack
   end
 
   private
-    def build_player
-      @player = Player.new
+
+  def build_player
+    @player = Player.new
+  end
+
+  def build_deck
+    @deck = Deck.new
+  end
+
+  def build_dealer
+    @dealer = Dealer.new
+  end
+
+  def point_player
+    player_point = 0
+    count_a = 0
+
+    @player.hands.each do |hand|
+      player_point += point(hand)
+      # 「A」が何回出たかを計算
+      count_a += 1 if point(hand) == 0
     end
 
-    def build_deck
-      @deck = Deck.new
-    end
-
-    def build_dealer
-      @dealer = Dealer.new
-    end
-
-    def point_player
-      player_point = 0
-      count_a = 0
-
-      @player.hands.each do |hand|
-        player_point += point(hand)
-        #「A」が何回出たかを計算
-        if point(hand) == 0
-          count_a += 1
-        end
-      end
-
-      count_a.times do |i|
-        if player_point <= 10
-          player_point += 11
-          @count_11 = 1
-        else
-          player_point += 1
-          @count_11 = 0
-        end
-      end
-
-      return player_point
-    end
-
-    def point_dealer
-      dealer_point = 0
-      count_a = 0
-
-      @dealer.hands.each do |hand|
-        dealer_point += point(hand)
-        if point(hand) == 0
-          count_a += 1
-        end
-      end
-
-      count_a.times do |i|
-        if dealer_point <= 10
-          dealer_point += 11
-          @count_11_dealer = 1
-        else
-          dealer_point += 1
-          @count_11_dealer = 0
-        end
-      end
-
-      dealer_point
-    end
-
-    def point(card)
-      if card.number == "J" || card.number == "Q" || card.number == "K"
-        return number = 10
-      elsif card.number == "A"
-        return number = 0
+    count_a.times do |_i|
+      if player_point <= 10
+        player_point += 11
+        @count_11 = 1
       else
-        return card.number.to_i
+        player_point += 1
+        @count_11 = 0
       end
     end
 
-    def request_bet(player)
-      while true
-        @bet = gets.chomp.to_i
+    player_point
+  end
 
-        if @bet.between?(1, player.money)
-          @money_show = player.bet_money(@bet)
-          money_information4
+  def point_dealer
+    dealer_point = 0
+    count_a = 0
 
-          break
-        else
-          information14
+    @dealer.hands.each do |hand|
+      dealer_point += point(hand)
+      count_a += 1 if point(hand) == 0
+    end
 
-        end
+    count_a.times do |_i|
+      if dealer_point <= 10
+        dealer_point += 11
+        @count_11_dealer = 1
+      else
+        dealer_point += 1
+        @count_11_dealer = 0
       end
     end
+
+    dealer_point
+  end
+
+  def point(card)
+    if card.number == 'J' || card.number == 'Q' || card.number == 'K'
+      number = 10
+    elsif card.number == 'A'
+      number = 0
+    else
+      card.number.to_i
+    end
+  end
+
+  def request_bet(player)
+    while true
+      @bet = gets.chomp.to_i
+
+      if @bet.between?(1, player.money)
+        @money_show = player.bet_money(@bet)
+        money_information4
+
+        break
+      else
+        information14
+
+      end
+    end
+  end
 end

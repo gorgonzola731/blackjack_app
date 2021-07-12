@@ -1,12 +1,11 @@
 class Deck
-
   # カードデッキを作成し、シャッフルまで行う
   def initialize
     # デッキの配列を生成
     @cards = []
 
-    mk = ["スペード", "ハート", "ダイア", "クラブ"]
-    num = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q" ,"K"]
+    mk = %w[スペード ハート ダイア クラブ]
+    num = %w[A 2 3 4 5 6 7 8 9 10 J Q K]
 
     mk.each do |mark|
       num.each do |number|
@@ -25,5 +24,4 @@ class Deck
     # 配列の最初の要素を抜き出す。最後から抜き出す場合はpop
     @cards.shift
   end
-
 end
